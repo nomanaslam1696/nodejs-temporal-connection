@@ -1,0 +1,55 @@
+{
+  "name": "temporal-hello-world",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc --build",
+    "build.watch": "tsc --build --watch",
+    "lint": "eslint .",
+    "start": "ts-node src/worker.ts",
+    "start.watch": "nodemon src/worker.ts",
+    "workflow": "ts-node src/client.ts",
+    "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "test": "mocha --exit --require ts-node/register --require source-map-support/register src/mocha/*.test.ts"
+  },
+  "nodemonConfig": {
+    "execMap": {
+      "ts": "ts-node"
+    },
+    "ext": "ts",
+    "watch": [
+      "src"
+    ]
+  },
+  "dependencies": {
+    "@prisma/client": "^5.6.0",
+    "@temporalio/activity": "^1.8.6",
+    "@temporalio/client": "^1.8.6",
+    "@temporalio/worker": "^1.8.6",
+    "@temporalio/workflow": "^1.8.6",
+    "dotenv": "^16.3.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.5",
+    "nanoid": "3.x",
+    "prisma": "^5.6.0",
+    "temporal-rest": "^0.5.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@temporalio/testing": "^1.8.4",
+    "@tsconfig/node16": "^1.0.0",
+    "@types/mocha": "8.x",
+    "@types/mysql": "^2.15.24",
+    "@types/node": "^16.11.43",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-deprecation": "^1.2.1",
+    "mocha": "8.x",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.8.8",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.4.2"
+  }
+}
