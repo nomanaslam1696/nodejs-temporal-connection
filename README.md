@@ -8,12 +8,6 @@
 1. `npm run start.watch` to start the Worker.
 1. In another shell, `npm run workflow` to run the Workflow Client.
 
-The Workflow should return:
-
-```bash
-Hello, Temporal!
-```
-
 workflow execution API should have the body in format of array of objects
 for example...
 
