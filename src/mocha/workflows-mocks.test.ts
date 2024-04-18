@@ -1,7 +1,7 @@
 import { TestWorkflowEnvironment } from '@temporalio/testing';
 import { after, before, it } from 'mocha';
 import { Worker } from '@temporalio/worker';
-import { example } from '../workflows';
+import { CommunicationChannelFlow } from '../workflows';
 import assert from 'assert';
 
 describe('Example workflow with mocks', () => {
@@ -29,7 +29,7 @@ describe('Example workflow with mocks', () => {
     });
 
     const result = await worker.runUntil(
-      client.workflow.execute(example, {
+      client.workflow.execute(CommunicationChannelFlow, {
         args: ['Temporal'],
         workflowId: 'test',
         taskQueue,

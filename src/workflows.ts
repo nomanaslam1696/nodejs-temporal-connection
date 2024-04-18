@@ -4,11 +4,10 @@ import type * as activities from './activities';
 import { ApplicationFailure, sleep } from '@temporalio/workflow';
 import { userData } from './shared';
 
-const { sendEmail, sendSms, sendNotification, addUserToDb,removeUser } = workflow.proxyActivities<typeof activities>({
+const { sendEmail, sendSms, sendNotification, addUserToDb, removeUser } = workflow.proxyActivities<typeof activities>({
   startToCloseTimeout: '1 minute',
 });
-export async function example(dataObj: userData): Promise<string> {
-  
+export async function CommunicationChannelFlow(dataObj: userData): Promise<string> {
   await addUserToDb(dataObj.subscriber_id);
 
   const data = dataObj.tasks;
@@ -45,7 +44,7 @@ export async function example(dataObj: userData): Promise<string> {
       throw new ApplicationFailure(`your type is not well defined`);
     }
   }
-    await removeUser(dataObj.subscriber_id)
+  await removeUser(dataObj.subscriber_id);
 
   return 'workflow executed successfully';
 }

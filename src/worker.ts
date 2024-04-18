@@ -15,6 +15,8 @@ async function run() {
     activities,
   });
   runClient().catch((err) => {
+    console.log('Error in starting application', err.message);
+
     console.error(err);
     process.exit(1);
   });
